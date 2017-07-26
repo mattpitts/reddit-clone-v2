@@ -19,6 +19,7 @@ export class App extends React.Component {
 		this.updateCommentState = this.updateCommentState.bind(this);
 		this.updateSortState = this.updateSortState.bind(this);
 		this.updateFilterState = this.updateFilterState.bind(this);
+		this.handlePostEdit = this.handlePostEdit.bind(this);
 		seeds.forEach(post => {
 			post.replyCount = getPostChildren(post);
 			updatePostRating(post);
@@ -43,12 +44,16 @@ export class App extends React.Component {
 		});
 	}
 
-	submitPost(post) {
-		post.age = getPostAge(post.time);
-		this.state.posts.push(post)
-		this.setState({
-			hidePostForm: true
-		});
+	submitPost(post, id) {
+		if(id !== undefined) {
+			this.updateCommentState(id, post);
+		} else {
+			post.age = getPostAge(post.time);
+			this.state.posts.push(post)
+			this.setState({
+				hidePostForm: true
+			});
+		}
 	}
 
 
@@ -66,6 +71,17 @@ export class App extends React.Component {
 		updatedPosts = sortPostsByKey(updatedPosts, this.state.sortBy)
 		this.setState({
 			posts: updatedPosts
+		})
+	}
+
+	handlePostEdit(id) {
+		this.setState({
+			posts: this.state.posts.map((post, i) => {
+				if(i === id) {
+					post.showEdit = !post.showEdit
+				}
+				return post;
+			})
 		})
 	}
 
@@ -106,7 +122,7 @@ export class App extends React.Component {
 					updateFilterState={this.updateFilterState}
 					/>
 				{!this.state.hidePostForm &&
-					<PostForm submitNewPost={this.submitPost}
+					<PostForm submitPost={this.submitPost}
 					/>
 				}
 				<div className="container">
@@ -116,6 +132,8 @@ export class App extends React.Component {
 								id={i}
 								postData={post}
 								updateCommentState={this.updateCommentState}
+								handlePostEdit={this.handlePostEdit}
+								submitPost={this.submitPost}
 							/>
 						)
 					}

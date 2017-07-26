@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {CommentContainer} from './CommentContainer';
+import { PostForm} from './PostForm';
 
 export class Post extends React.Component {
 	constructor(props) {
@@ -76,7 +77,7 @@ export class Post extends React.Component {
 									<i onClick={this.triggerUpvote}className="fa fa-arrow-circle-up upvote-small"></i>
 									{this.props.postData.upvotes - this.props.postData.downvotes}
 									<i onClick={this.triggerDownvote}className="fa fa-arrow-circle-down downvote-small"></i>
-									Created {this.props.postData.age} by {this.props.postData.author} |
+									Created {this.props.postData.age} by {this.props.postData.author} | <i onClick={() => this.props.handlePostEdit(this.props.id)}className="fa fa-pencil" aria-hidden="true"></i> |
 									<button onClick={this.toggleComments} className="card-subtitle mb-2 text-muted comment-button" type="button">{commentText}</button></h6>
 									<p className="card-text post-body">{this.props.postData.body}</p>
 								</div>
@@ -89,6 +90,7 @@ export class Post extends React.Component {
 
 						</div>
 					</div>
+					{this.props.postData.showEdit && <PostForm submitPost={this.props.submitPost} postData={this.props.postData} id={this.props.id}/> }
 					{this.state.showComments &&
 						<CommentContainer
 							comments={this.props.postData.comments}

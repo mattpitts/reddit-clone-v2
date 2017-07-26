@@ -1,16 +1,27 @@
 import React from 'react';
 
 export class PostForm extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
-		this.state = {
-			title: '',
-			body: '',
-			author: '',
-			url: ''
+		console.log(this.props);
+		if(this.props.postData !== undefined) {
+			this.state = {
+				title: this.props.postData.title,
+				body: this.props.postData.body,
+				author: this.props.postData.author,
+				url: this.props.postData.url
+			}
+		} else {
+			this.state = {
+				title: '',
+				body: '',
+				author: '',
+				url: ''
+			}
 		}
+
 	}
 
 	handleChange(event) {
@@ -27,13 +38,18 @@ export class PostForm extends React.Component {
 			body: this.state.body,
 			author: this.state.author,
 			url: this.state.url,
-			time: Date.now(),
-			upvotes: 1,
-			downvotes: 0,
-			rating: 1,
-			comments: []
+			time: this.props.postData ? this.props.postData.time : Date.now(),
+			upvotes: this.props.postData ? this.props.postData.upvotes : 1,
+			downvotes: this.props.postData ? this.props.postData.downvotes : 0,
+			rating: this.props.postData ? this.props.postData.rating : 1,
+			comments: this.props.postData ? this.props.postData.comments : []
 		}
-		this.props.submitNewPost(post);
+		if(this.props.id !== undefined) {
+			let id = this.props.id
+			this.props.submitPost(post, id);
+		} else {
+			this.props.submitPost(post);
+		}
 	}
 
 

@@ -1,27 +1,5 @@
 export const seeds = [
 	{
-		author: "BobRoss187",
-		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-		time: Date.now() - 55000,
-		title: "I like turtles",
-		url: "http://lorempixel.com/200/200",
-		upvotes: 1,
-		downvotes: 0,
-		filtered: false,
-		comments: []
-	},
-	{
-		author: "87899837933988",
-		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-		time: 1500508612944,
-		title: "You won't believe this",
-		url: "http://lorempixel.com/200/200",
-		upvotes: 1,
-		downvotes: 0,
-		filtered: false,
-		comments: []
-	},
-	{
 		author: "Nickelback",
 		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 		time: Date.now(),
@@ -30,6 +8,7 @@ export const seeds = [
 		upvotes: 100,
 		downvotes: 90,
 		filtered: false,
+		showEdit: false,
 		comments: [
 			{
 				body: "That is sweeet",
@@ -46,7 +25,7 @@ export const seeds = [
 							{
 								body: "Trump is an orange bitch",
 								time: Date.now()-40000,
-								upvotes: 1,
+								upvotes: 15891,
 								downvotes: 0,
 								comments: [
 									{
@@ -91,7 +70,7 @@ export const seeds = [
 						downvotes: 0,
 						comments: [
 							{
-								body: "Fuck off",
+								body: "U suck",
 								time: Date.now() - 1000,
 								upvotes: 1,
 								downvotes: 3,
@@ -109,5 +88,29 @@ export const seeds = [
 				comments: []
 			}
 		]
+	},
+	{
+		author: "BobRoss187",
+		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		time: Date.now() - 55000,
+		title: "I like turtles",
+		url: "http://lorempixel.com/200/200",
+		upvotes: 1,
+		downvotes: 0,
+		filtered: false,
+		showEdit: false,
+		comments: []
+	},
+	{
+		author: "87899837933988",
+		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		time: 1500508612944,
+		title: "You won't believe this",
+		url: "http://lorempixel.com/200/200",
+		upvotes: 1,
+		downvotes: 0,
+		filtered: false,
+		showEdit: false,
+		comments: []
 	}
 ];
